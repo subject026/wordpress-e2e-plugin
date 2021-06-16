@@ -52,8 +52,7 @@ before_install:
 install:
   - composer install
   - nvm install --lts
-  - npm install
-  - npm run build
+  - yarn
 
 before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
