@@ -1,65 +1,77 @@
 version: 2.1
-
 jobs:
   build:
-    - image: node:latest
-  steps:
-    - run:
-        name: The First Step
-        command: |
-          echo 'Hello World!'
-          echo 'This is the delivery pipeline'
+    docker:
+      - image: alpine:3.7
+    steps:
+      - run:
+          name: The First Step
+          command: |
+            echo 'Hello World!'
+            echo 'This is the delivery pipeline'
 
-machine:
-  timezone: Europe/Copenhagen
+# version: 2.1
 
-  php:
-    version: 5.3.3
+# jobs:
+#   build:
+#     - image: node:latest
+#   steps:
+#     - run:
+#         name: The First Step
+#         command: |
+#           echo 'Hello World!'
+#           echo 'This is the delivery pipeline'
 
-  # This will be added to the `/etc/hosts` file
-  hosts:
-    wppusher-plugin.dev: 127.0.0.1
+# machine:
+#   timezone: Europe/Copenhagen
 
-dependencies:
-  pre:
-    # No password is required for the MySQL user `ubuntu`
-    - mysql -u ubuntu -e "create database wordpress"
+#   php:
+#     version: 5.3.3
 
-    # Use cURL to fetch WP-CLI
-    - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+#   # This will be added to the `/etc/hosts` file
+#   hosts:
+#     wppusher-plugin.dev: 127.0.0.1
 
-    # Make sure WP-CLI is executable
-    - chmod +x wp-cli.phar
+# dependencies:
+#   pre:
+#     # No password is required for the MySQL user `ubuntu`
+#     - mysql -u ubuntu -e "create database wordpress"
 
-    # Download WordPress into `wordpress` directory
-    - ./wp-cli.phar core download --allow-root --path=wordpress
+#     # Use cURL to fetch WP-CLI
+#     - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
-    # Generate `wp-config.php` file
-    - ./wp-cli.phar core config --allow-root --dbname=wordpress --dbuser=ubuntu --dbhost=localhost --path=wordpress
+#     # Make sure WP-CLI is executable
+#     - chmod +x wp-cli.phar
 
-    # Install WordPress
-    - ./wp-cli.phar core install --allow-root --admin_name=admin --admin_password=admin --admin_email=admin@example.com --url=http://wppusher-plugin.dev:8080 --title=WordPress --path=wordpress
+#     # Download WordPress into `wordpress` directory
+#     - ./wp-cli.phar core download --allow-root --path=wordpress
 
-    # Clonse WP Pusher plugin from GitHub
-    - git clone git@github.com:petersuhm/wppusher-plugin.git wordpress/wp-content/plugins/wppusher
+#     # Generate `wp-config.php` file
+#     - ./wp-cli.phar core config --allow-root --dbname=wordpress --dbuser=ubuntu --dbhost=localhost --path=wordpress
 
-    # And use WP-CLI to activate it
-    - ./wp-cli.phar plugin activate wppusher --path=wordpress
+#     # Install WordPress
+#     - ./wp-cli.phar core install --allow-root --admin_name=admin --admin_password=admin --admin_email=admin@example.com --url=http://wppusher-plugin.dev:8080 --title=WordPress --path=wordpress
 
-  post:
-    # Copy Apache conf into `site-available`
-    - cp ~/wppusher-plugin/apache-ci.conf /etc/apache2/sites-available
+#     # Clonse WP Pusher plugin from GitHub
+#     - git clone git@github.com:petersuhm/wppusher-plugin.git wordpress/wp-content/plugins/wppusher
 
-    # Use `a2ensite` to create a symlink for the config
-    - a2ensite apache-ci.conf
+#     # And use WP-CLI to activate it
+#     - ./wp-cli.phar plugin activate wppusher --path=wordpress
 
-    # Restart the Apache server
-    - sudo service apache2 restart
+#   post:
+#     # Copy Apache conf into `site-available`
+#     - cp ~/wppusher-plugin/apache-ci.conf /etc/apache2/sites-available
 
-test:
-  override:
-    # This is just for us to see that the WP Pusher plugin was actually installed and is active
-    - ./wp-cli.phar plugin list --path=wordpress
+#     # Use `a2ensite` to create a symlink for the config
+#     - a2ensite apache-ci.conf
 
-    # Finally, run our Behat features
-    - vendor/bin/behat
+#     # Restart the Apache server
+#     - sudo service apache2 restart
+
+# test:
+#   override:
+#     # This is just for us to see that the WP Pusher plugin was actually installed and is active
+#     - ./wp-cli.phar plugin list --path=wordpress
+
+#     # Finally, run our Behat features
+#     - vendor/bin/behat
