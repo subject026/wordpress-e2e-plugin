@@ -42,17 +42,19 @@ const gotoPage = async () => {
 };
 
 test.only("something example test", async () => {
-  await createPost();
+  // await createPost();
 
-  const links = await gotoPage();
+  // const links = await gotoPage();
 
-  const header = await page.$eval("h1", el => el.textContent);
+  // await page.goto("http://localhost:3750");
+
+  // const header = await page.$eval("h1", el => el.textContent);
   // await page.waitForSelector(".wp-block");
 
   expect("woo").toBe("woo");
   // expect(header).toBe(pageTitle);
 
-  expect(links).toBe("wooooooo");
+  // expect(links).toBe("wooooooo");
 
   // // The block should have the Text field.
   // const placeholderSelector = ".components-placeholder";

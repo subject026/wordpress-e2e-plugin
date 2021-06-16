@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "wp-env",
+    "start": "WP_ENV_PORT=3750 wp-env",
     "test:e2e": "wp-scripts test-e2e --config=tests/e2e/jest.config.js --runInBand",
     "test:e2e:watch": "PUPPETEER_HEADLESS=false PUPPETEER_SLOMO=300 wp-scripts test-e2e --config=tests/e2e/jest.config.js --runInBand",
     "test:e2e:interactive": "npm run test:e2e -- --puppeteer-interactive"
