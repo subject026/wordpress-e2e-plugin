@@ -19,16 +19,16 @@ services:
 
 matrix:
   include:
-    - php: 7.4snapshot
-      env: WP_TRAVISCI=test-php
-    - php: 7.3
-      env: WP_TRAVISCI=test-php
-    - php: 7.2
-      env: WP_TRAVISCI=test-php
-    - php: 7.2
-      env: WP_TRAVISCI=test-js
-    - php: 7.2
-      env: WP_TRAVISCI=lint
+    # - php: 7.4snapshot
+    #   env: WP_TRAVISCI=test-php
+    # - php: 7.3
+    #   env: WP_TRAVISCI=test-php
+    # - php: 7.2
+    #   env: WP_TRAVISCI=test-php
+    # - php: 7.2
+    #   env: WP_TRAVISCI=test-js
+    # - php: 7.2
+    #   env: WP_TRAVISCI=lint
     - php: 7.3
       env: WP_TRAVISCI=test-e2e
 
