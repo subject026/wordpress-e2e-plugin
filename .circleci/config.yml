@@ -12,9 +12,9 @@ jobs:
       - run:
           name: The First Step
           command: |
-            apt update
-            apt -y upgrade
-            apt install nodejs
+            apt update -y
+            apt upgrade -y
+            apt install -y nodejs
             npm --version
             yarn
           # composer install
