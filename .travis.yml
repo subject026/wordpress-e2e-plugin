@@ -73,6 +73,6 @@ script:
       npm run lint:js
       npm run lint:pkg-json
     elif [[ "$WP_TRAVISCI" == "test-e2e" ]] ; then
-      npm run env start
-      npm run test:e2e
+      yarn start
+      yarn test:e2e
     fi
