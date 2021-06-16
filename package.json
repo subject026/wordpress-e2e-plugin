@@ -1,0 +1,22 @@
+{
+  "name": "2_wp-env",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "wp-env",
+    "test:e2e": "wp-scripts test-e2e --config=tests/e2e/jest.config.js --runInBand",
+    "test:e2e:watch": "PUPPETEER_HEADLESS=false PUPPETEER_SLOMO=300 wp-scripts test-e2e --config=tests/e2e/jest.config.js --runInBand",
+    "test:e2e:interactive": "npm run test:e2e -- --puppeteer-interactive"
+  },
+  "dependencies": {
+    "@wordpress/env": "^4.0.5"
+  },
+  "devDependencies": {
+    "@wordpress/e2e-test-utils": "^5.3.0",
+    "@wordpress/jest-puppeteer-axe": "^3.0.5",
+    "@wordpress/keycodes": "^3.1.1",
+    "@wordpress/scripts": "^16.1.2",
+    "puppeteer": "^10.0.0"
+  }
+}
