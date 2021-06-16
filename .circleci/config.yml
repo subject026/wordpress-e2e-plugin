@@ -12,7 +12,9 @@ jobs:
       - run:
           name: The First Step
           command: |
-            echo "yarn"
+            apt update 
+            apt upgrade
+            apt install node
           # composer install
 
 # version: 2.1
