@@ -12,8 +12,8 @@ jobs:
       - run:
           name: The First Step
           command: |
-            apt update -y
-            apt upgrade -y
+            apt update
+            apt -y upgrade
             apt install nodejs
             npm --version
             yarn
