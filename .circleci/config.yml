@@ -11,10 +11,9 @@ jobs:
     steps:
       - run:
           name: The First Step
-          command: |
-            yarn
-            composer install
-
+          # command: |
+          # yarn
+          # composer install
 # version: 2.1
 
 # jobs:
