@@ -12,8 +12,8 @@ jobs:
       - run:
           name: The First Step
           command: |
-            apt update 
-            apt upgrade
+            apt update -y
+            apt upgrade -y
             apt install node
           # composer install
 
