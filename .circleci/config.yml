@@ -7,8 +7,8 @@ jobs:
       - run:
           name: The First Step
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+            yarn
+            composer install
 
 # version: 2.1
 
