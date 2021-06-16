@@ -5,6 +5,8 @@ jobs:
       - image: wordpress:latest
 
       - image: mysql
+        environment:
+          - MYSQL_ROOT_PASSWORD=test
 
     steps:
       - run:
