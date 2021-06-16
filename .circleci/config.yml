@@ -15,7 +15,8 @@ jobs:
             apt update -y
             apt upgrade -y
             apt install -y nodejs
-            npm --version
+            apt install -y npm
+            npm install yarn --global
             yarn
           # composer install
 
