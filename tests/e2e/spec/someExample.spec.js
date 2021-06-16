@@ -33,6 +33,8 @@ const createPost = async () => {
   // hit publish
   await page.focus(".editor-post-publish-button__button");
   await page.keyboard.press("Enter");
+
+  clickButton("View Page");
 };
 
 const gotoPage = async () => {
@@ -42,7 +44,7 @@ const gotoPage = async () => {
 };
 
 test.only("something example test", async () => {
-  // await createPost();
+  await createPost();
 
   // const links = await gotoPage();
 
