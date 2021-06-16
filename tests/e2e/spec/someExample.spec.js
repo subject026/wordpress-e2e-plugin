@@ -55,6 +55,7 @@ test.only("something example test", async () => {
   const header = await page.$eval("h1", el => el.textContent);
   // await page.waitForSelector(".wp-block");
 
+  expect("woo").toBe("woo");
   expect(header).toBe(pageTitle);
 
   // // The block should have the Text field.
