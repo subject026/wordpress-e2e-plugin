@@ -14,7 +14,9 @@ jobs:
           command: |
             apt update -y
             apt upgrade -y
-            apt install node
+            apt install nodejs
+            npm -v
+            yarn
           # composer install
 
 # version: 2.1
