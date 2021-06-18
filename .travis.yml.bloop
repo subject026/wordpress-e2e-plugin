@@ -19,16 +19,16 @@ services:
 
 matrix:
   include:
-    - php: 7.4snapshot
-      env: WP_TRAVISCI=test-php
-    - php: 7.3
-      env: WP_TRAVISCI=test-php
-    - php: 7.2
-      env: WP_TRAVISCI=test-php
-    - php: 7.2
-      env: WP_TRAVISCI=test-js
-    - php: 7.2
-      env: WP_TRAVISCI=lint
+    # - php: 7.4snapshot
+    #   env: WP_TRAVISCI=test-php
+    # - php: 7.3
+    #   env: WP_TRAVISCI=test-php
+    # - php: 7.2
+    #   env: WP_TRAVISCI=test-php
+    # - php: 7.2
+    #   env: WP_TRAVISCI=test-js
+    # - php: 7.2
+    #   env: WP_TRAVISCI=lint
     - php: 7.3
       env: WP_TRAVISCI=test-e2e
 
@@ -52,8 +52,7 @@ before_install:
 install:
   - composer install
   - nvm install --lts
-  - npm install
-  - npm run build
+  - yarn
 
 before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -74,6 +73,6 @@ script:
       npm run lint:js
       npm run lint:pkg-json
     elif [[ "$WP_TRAVISCI" == "test-e2e" ]] ; then
-      npm run env start
-      npm run test:e2e
+      yarn start
+      yarn test:e2e
     fi

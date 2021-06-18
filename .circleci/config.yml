@@ -1,0 +1,145 @@
+version: 2.1
+jobs:
+  # build:
+  #   docker:
+  #     - image: wordpress:latest
+
+  #     # - image: mysql
+  #     #   environment:
+  #     #     - MYSQL_ROOT_PASSWORD=test
+
+  #   steps:
+  #     - run:
+  #         name: The First Step
+  #         command: |
+  #           apt update -y
+  #           apt upgrade -y
+  #           apt install -y nodejs
+  #           apt install -y npm
+  #           npm install yarn --global
+  #           yarn
+  # composer install
+  test:
+    machine:
+      image: ubuntu-2004:202104-01
+
+      # - image: wordpress:5.7.2
+      #   environment:
+      #     WORDPRESS_DB_HOST: localhost
+      #     WORDPRESS_DB_USER: test
+      #     WORDPRESS_DB_PASSWORD: test
+      #     WORDPRESS_DB_NAME: test_db
+      #
+
+      ## DOCKER COMPOSE NOW
+
+      #
+
+      # - image: mysql:8
+      #   environment:
+      #     MYSQL_ROOT_PASSWORD: test
+      #     MYSQL_USER: test
+      #     MYSQL_PASSWORD: test
+      #     MYSQL_DATABASE: test
+    steps:
+      - checkout
+      - run:
+          name: test stuff
+          command: |
+            docker-compose -f docker-compose.test.yml up
+          # name: actually run tests
+          # command: |
+          #   sudo yarn
+          #   sudo yarn start
+          #   sudo yarn test:e2e
+
+workflows:
+  build_and_test:
+    jobs:
+      # - build
+      - test
+      # - test:
+      #     requires:
+      #       - build
+#   test:
+#     docker:
+#       - image: wordpress:latest
+#     steps:
+#       - run:
+#           name: Install Stuffs
+#           command: |
+#             apt update -y
+#             apt upgrade -y
+#             apt install -y nodejs
+#             apt install -y npm
+#             npm install yarn --global
+#             yarn
+
+#       - run:
+#         name: Testings
+#         command: yarn test:e2e
+# # version: 2.1
+
+# jobs:
+#   build:
+#     - image: node:latest
+#   steps:
+#     - run:
+#         name: The First Step
+#         command: |
+#           echo 'Hello World!'
+#           echo 'This is the delivery pipeline'
+
+# machine:
+#   timezone: Europe/Copenhagen
+
+#   php:
+#     version: 5.3.3
+
+#   # This will be added to the `/etc/hosts` file
+#   hosts:
+#     wppusher-plugin.dev: 127.0.0.1
+
+# dependencies:
+#   pre:
+#     # No password is required for the MySQL user `ubuntu`
+#     - mysql -u ubuntu -e "create database wordpress"
+
+#     # Use cURL to fetch WP-CLI
+#     - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+#     # Make sure WP-CLI is executable
+#     - chmod +x wp-cli.phar
+
+#     # Download WordPress into `wordpress` directory
+#     - ./wp-cli.phar core download --allow-root --path=wordpress
+
+#     # Generate `wp-config.php` file
+#     - ./wp-cli.phar core config --allow-root --dbname=wordpress --dbuser=ubuntu --dbhost=localhost --path=wordpress
+
+#     # Install WordPress
+#     - ./wp-cli.phar core install --allow-root --admin_name=admin --admin_password=admin --admin_email=admin@example.com --url=http://wppusher-plugin.dev:8080 --title=WordPress --path=wordpress
+
+#     # Clonse WP Pusher plugin from GitHub
+#     - git clone git@github.com:petersuhm/wppusher-plugin.git wordpress/wp-content/plugins/wppusher
+
+#     # And use WP-CLI to activate it
+#     - ./wp-cli.phar plugin activate wppusher --path=wordpress
+
+#   post:
+#     # Copy Apache conf into `site-available`
+#     - cp ~/wppusher-plugin/apache-ci.conf /etc/apache2/sites-available
+
+#     # Use `a2ensite` to create a symlink for the config
+#     - a2ensite apache-ci.conf
+
+#     # Restart the Apache server
+#     - sudo service apache2 restart
+
+# test:
+#   override:
+#     # This is just for us to see that the WP Pusher plugin was actually installed and is active
+#     - ./wp-cli.phar plugin list --path=wordpress
+
+#     # Finally, run our Behat features
+#     - vendor/bin/behat
