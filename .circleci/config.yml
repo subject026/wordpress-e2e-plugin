@@ -23,10 +23,10 @@ jobs:
     docker:
       - image: wordpress:14.7.2
         environment:
-          WORDPRESS_DB_HOST: localhost
-          WORDPRESS_DB_USER: test
-          WORDPRESS_DB_PASSWORD: test
-          WORDPRESS_DB_NAME: test_db
+          - WORDPRESS_DB_HOST=localhost
+          - WORDPRESS_DB_USER=test
+          - WORDPRESS_DB_PASSWORD=test
+          - WORDPRESS_DB_NAME=test_db
 
       - image: mysql:8
         enviornment:
