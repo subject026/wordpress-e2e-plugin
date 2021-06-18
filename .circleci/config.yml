@@ -18,15 +18,16 @@ jobs:
   #           apt install -y npm
   #           npm install yarn --global
   #           yarn
-          # composer install
+  # composer install
   test:
     docker:
       - image: wordpress:latest
     steps:
       - run:
           name: test stuff
-          command: yarn start
-          command: yarn test:e2e
+          command: /
+            yarn start
+            yarn test:e2e
 
 workflows:
   build_and_test:
