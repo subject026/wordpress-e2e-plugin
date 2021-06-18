@@ -21,12 +21,19 @@ jobs:
   # composer install
   test:
     docker:
+      - image: circleci/node:14
+
       - image: wordpress:5.7.2
         environment:
           WORDPRESS_DB_HOST: localhost
           WORDPRESS_DB_USER: test
           WORDPRESS_DB_PASSWORD: test
           WORDPRESS_DB_NAME: test_db
+      #
+
+      ## DOCKER COMPOSE NOW
+
+      #
 
       - image: mysql:8
         environment:
@@ -39,10 +46,6 @@ jobs:
       - run:
           name: test stuff
           command: |
-            apt update -y
-            apt upgrade -y
-            snap install node --classic --channel=14
-            apt install -y npm
             npm install yarn --global
             yarn
             yarn start
