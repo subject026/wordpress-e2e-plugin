@@ -31,7 +31,9 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - test
+    - test:
+      requires:
+      - build
 #   test:
 #     docker:
 #       - image: wordpress:latest
