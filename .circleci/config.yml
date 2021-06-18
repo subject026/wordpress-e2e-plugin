@@ -23,7 +23,7 @@ jobs:
     docker:
       - image: wordpress:latest
     steps:
-      checkout
+      - checkout
       - run:
           name: test stuff
           command: |
