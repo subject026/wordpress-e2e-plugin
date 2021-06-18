@@ -46,10 +46,10 @@ jobs:
       - run:
           name: test stuff
           command: |
-            npm install yarn --global
-            yarn
-            yarn start
-            yarn test:e2e
+            sudo npm install yarn --global
+            sudo yarn
+            sudo yarn start
+            sudo yarn test:e2e
 
 workflows:
   build_and_test:
