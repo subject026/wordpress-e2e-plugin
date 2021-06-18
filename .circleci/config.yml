@@ -23,7 +23,9 @@ jobs:
     docker:
       - image: wordpress:latest
     steps:
-      run: yarn test:e2e
+      - run:
+          name: test stuff
+          command: yarn test:e2e
 #   test:
 #     docker:
 #       - image: wordpress:latest
