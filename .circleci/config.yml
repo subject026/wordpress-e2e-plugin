@@ -48,6 +48,7 @@ jobs:
           command: |
             ls -la
             docker-compose -f docker-compose.test.yml up -d
+            docker exec project_node-1 bash yarn && yarn test:e2e
           # name: actually run tests
           # command: |
           #   sudo yarn
