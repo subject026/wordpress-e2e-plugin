@@ -20,7 +20,7 @@ jobs:
   #           yarn
   #         # composer install
 
-  test:
+  testingz:
     docker:
       - image: wordpress:latest
     steps:
