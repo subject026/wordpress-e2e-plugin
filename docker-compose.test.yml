@@ -29,8 +29,8 @@ services:
     # ports:
     #   - "3306:3306"
   
-    node:
-      image: node:14
+  node:
+    image: node:14
   
   # nginx:
   #   image: nginx:stable-alpine
