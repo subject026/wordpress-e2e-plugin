@@ -21,7 +21,18 @@ jobs:
   # composer install
   test:
     docker:
-      - image: wordpress:latest
+      - image: wordpress:14.7.2
+        environment:
+          WORDPRESS_DB_HOST: localhost
+          WORDPRESS_DB_USER: test
+          WORDPRESS_DB_PASSWORD: test
+          WORDPRESS_DB_NAME: test_db
+      - image: mysql:8
+        enviornment:
+          - MYSQL_ROOT_PASSWORD=test
+          - MYSQL_USER=test
+          - MYSQL_PASSWORD=test
+          - MYSQL_DATABASE=test
     steps:
       - checkout
       - run:
