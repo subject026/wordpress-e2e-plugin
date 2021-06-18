@@ -18,14 +18,14 @@ jobs:
             apt install -y npm
             npm install yarn --global
             yarn
-            ping localhost -p 8080
           # composer install
 
   test:
     steps:
-      -run:
+      - run:
         name: Test Step 1
-        command: yarn test:e2e
+        command: /
+          yarn test:e2e
 # version: 2.1
 
 # jobs:
