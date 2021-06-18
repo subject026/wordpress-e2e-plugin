@@ -18,8 +18,10 @@ jobs:
             apt install -y npm
             npm install yarn --global
             yarn
+            ping localhost -p 8080
           # composer install
 
+  test:
 # version: 2.1
 
 # jobs:
