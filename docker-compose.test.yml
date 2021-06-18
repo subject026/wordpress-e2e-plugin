@@ -30,7 +30,7 @@ services:
     #   - "3306:3306"
   
   node:
-    image: node:14
+    build: .
   
   # nginx:
   #   image: nginx:stable-alpine
