@@ -26,6 +26,12 @@ jobs:
       - run:
           name: test stuff
           command: |
+            apt update -y
+            apt upgrade -y
+            apt install -y nodejs
+            apt install -y npm
+            npm install yarn --global
+            yarn
             yarn start
             yarn test:e2e
 
