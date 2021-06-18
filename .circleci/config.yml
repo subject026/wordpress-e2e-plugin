@@ -24,8 +24,7 @@ jobs:
     steps:
       - run:
         name: Test Step 1
-        command: /
-          yarn test:e2e
+        command: yarn test:e2e
 # version: 2.1
 
 # jobs:
