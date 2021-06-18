@@ -32,10 +32,11 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      # - build
+      - test
+      # - test:
+      #     requires:
+      #       - build
 #   test:
 #     docker:
 #       - image: wordpress:latest
