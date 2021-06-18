@@ -27,6 +27,7 @@ jobs:
           WORDPRESS_DB_USER: test
           WORDPRESS_DB_PASSWORD: test
           WORDPRESS_DB_NAME: test_db
+
       - image: mysql:8
         enviornment:
           - MYSQL_ROOT_PASSWORD=test
