@@ -20,8 +20,8 @@ jobs:
   #           yarn
   # composer install
   test:
-    docker:
-      - image: circleci/node:14
+    machine:
+      - image: ubuntu-2004:202104-01
 
       # - image: wordpress:5.7.2
       #   environment:
@@ -46,15 +46,12 @@ jobs:
       - run:
           name: test stuff
           command: |
-            apt-get update
-            apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
-            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-            sudo echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-            sudo apt-get update
-            sudo apt-get install docker-ce docker-ce-cli containerd.io
-            sudo yarn
-            sudo yarn start
-            sudo yarn test:e2e
+            docker-compose up -d
+          # name: actually run tests
+          # command: |
+          #   sudo yarn
+          #   sudo yarn start
+          #   sudo yarn test:e2e
 
 workflows:
   build_and_test:
