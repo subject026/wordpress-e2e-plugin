@@ -19,7 +19,11 @@ jobs:
             npm install yarn --global
             yarn
           # composer install
-
+  test:
+    docker:
+      - image: wordpress:latest
+    steps:
+      run: yarn test:e2e
 #   test:
 #     docker:
 #       - image: wordpress:latest
