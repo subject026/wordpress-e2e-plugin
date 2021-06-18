@@ -1,16 +1,31 @@
 version: 2.1
 jobs:
-  build:
+  # build:
+  #   docker:
+  #     - image: wordpress:latest
+
+  #     # - image: mysql
+  #     #   environment:
+  #     #     - MYSQL_ROOT_PASSWORD=test
+
+  #   steps:
+  #     - run:
+  #         name: The First Step
+  #         command: |
+  #           apt update -y
+  #           apt upgrade -y
+  #           apt install -y nodejs
+  #           apt install -y npm
+  #           npm install yarn --global
+  #           yarn
+  #         # composer install
+
+  test:
     docker:
       - image: wordpress:latest
-
-      # - image: mysql
-      #   environment:
-      #     - MYSQL_ROOT_PASSWORD=test
-
     steps:
       - run:
-          name: The First Step
+          name: Install Stuffs
           command: |
             apt update -y
             apt upgrade -y
@@ -18,12 +33,9 @@ jobs:
             apt install -y npm
             npm install yarn --global
             yarn
-          # composer install
 
-  test:
-    steps:
       - run:
-        name: Test Step 1
+        name: Testings
         command: yarn test:e2e
 # version: 2.1
 
