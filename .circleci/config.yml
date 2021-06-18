@@ -46,7 +46,6 @@ jobs:
       - run:
           name: test stuff
           command: |
-            sudo npm install yarn --global
             sudo yarn
             sudo yarn start
             sudo yarn test:e2e
