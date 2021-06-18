@@ -41,6 +41,8 @@ jobs:
           command: |
             apt update -y
             apt upgrade -y
+            curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+            bash nodesource_setup.sh
             apt install -y nodejs
             apt install -y npm
             npm install yarn --global
