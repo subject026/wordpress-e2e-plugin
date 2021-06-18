@@ -20,12 +20,19 @@ jobs:
             yarn
           # composer install
   test:
+    depends
     docker:
       - image: wordpress:latest
     steps:
       - run:
           name: test stuff
           command: yarn test:e2e
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test
 #   test:
 #     docker:
 #       - image: wordpress:latest
