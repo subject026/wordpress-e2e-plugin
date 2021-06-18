@@ -21,7 +21,7 @@ jobs:
   # composer install
   test:
     docker:
-      - image: wordpress:14.7.2
+      - image: wordpress:5.7.2
         environment:
           WORDPRESS_DB_HOST: localhost
           WORDPRESS_DB_USER: test
